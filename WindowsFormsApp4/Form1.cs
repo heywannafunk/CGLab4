@@ -13,9 +13,27 @@ namespace WindowsFormsApp4
     public partial class Form1 : Form
     {
         Graphics g;
-        //List<Point> primitives; //###TODO: stack of primitives on canvas
         SolidBrush b1 = new SolidBrush(Color.Black);   //primary color
         SolidBrush b2 = new SolidBrush(Color.White);   //secondary color
+        Prim currentPrim;
+
+
+        enum primitiveType
+        {
+            point, segment, polygon
+        }
+
+        struct Prim {
+            public Prim(primitiveType t, List<Point> p)
+            {
+                type = t;
+                points = p;
+            }
+
+            primitiveType type {get;}
+            List<Point> points { get; }
+            //int[][] matrix;
+        }
 
         private void panel3_MouseDown(object sender, MouseEventArgs e)
         {
@@ -37,7 +55,19 @@ namespace WindowsFormsApp4
             }
         }
 
+        private void disableRadios() 
+        {
+            radioPoint.Enabled = false;
+            radioRectangle.Enabled = false;
+            radioSegment.Enabled = false;
+        }
 
+        private void enableRadios()
+        {
+            radioPoint.Enabled = true;
+            radioRectangle.Enabled = true;
+            radioSegment.Enabled = true;
+        }
 
         public Form1()
         {
@@ -62,10 +92,13 @@ namespace WindowsFormsApp4
                 {
                     g.FillEllipse(b2, e.X-2, e.Y-2, 5, 5);
                 }
+                
+                disableRadios();
+                radioPoint.Checked = false;
+
+                panel5.Enabled = true;
+                textBox1.Text = "Point";
             }
-
-
-
             /* ###TODO: SEGMENT DRAWING
              */
 
@@ -78,6 +111,9 @@ namespace WindowsFormsApp4
         private void button1_Click(object sender, EventArgs e)
         {
             g.Clear(panel1.BackColor);
+            enableRadios();
+            radioPoint.Checked = true;
+            panel5.Enabled = false;
         }
     }
 }
