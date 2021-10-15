@@ -62,14 +62,14 @@ namespace WindowsFormsApp4
         private void disableRadios()
         {
             radioPoint.Enabled = false;
-            radioRectangle.Enabled = false;
+            radioPolygon.Enabled = false;
             radioSegment.Enabled = false;
         }
 
         private void enableRadios()
         {
             radioPoint.Enabled = true;
-            radioRectangle.Enabled = true;
+            radioPolygon.Enabled = true;
             radioSegment.Enabled = true;
         }
 
@@ -107,7 +107,7 @@ namespace WindowsFormsApp4
 
 
             //POLYGON DRAWING
-            if (radioRectangle.Checked)
+            if (radioPolygon.Checked)
             {
                 if (e.Button == MouseButtons.Left)
                 {
@@ -129,7 +129,7 @@ namespace WindowsFormsApp4
                     }
 
                     disableRadios();
-                    radioRectangle.Checked = false;
+                    radioPolygon.Checked = false;
 
                     panel5.Enabled = true;
                     textBox1.Text = "Polygon";
