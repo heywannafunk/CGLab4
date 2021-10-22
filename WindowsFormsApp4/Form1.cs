@@ -237,6 +237,7 @@ namespace WindowsFormsApp4
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
+            textBox6.Text = "";
         }
 
         public Form1()
@@ -325,6 +326,30 @@ namespace WindowsFormsApp4
             else
             {
                 button2.Enabled = false;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            bool belongs = true;
+            for (int i = 0; i < plist.Count()-1; i++)
+            {
+                if ((plist[i + 1].X - plist[i].X) * (yb.Value - plist[i].Y) - (plist[i + 1].Y - plist[i].Y) * (xb.Value - plist[i].X) < 0) {
+                    belongs = false;
+                }
+            }
+
+            if ((plist.First().X - plist.Last().X) * (yb.Value - plist.Last().Y) - (plist.First().Y - plist.Last().Y) * (xb.Value - plist.Last().X) < 0)
+            {
+                belongs = false;
+            }
+            if (belongs)
+            {
+                textBox6.Text = "Point does belong";
+            }
+            else
+            {
+                textBox6.Text = "Point does NOT belong";
             }
         }
 
