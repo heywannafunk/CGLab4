@@ -58,6 +58,23 @@ namespace WindowsFormsApp4
             g.FillRectangle(brush, x, y, 1, 1);
         }
 
+        void rotatePolygon(double alpha)
+        {
+            double angleRadian = alpha * Math.PI / 180;
+            PointF s = new PointF((float)xb, (float)yb);
+            PointF[] r = new PointF[plist.Count()];
+
+            for (int j = 0; j < plist.Count; j++)
+            {
+                float x = (float)((plist[j].X - s.X) * Math.Cos(angleRadian) - (plist[j].Y - s.Y) * Math.Sin(angleRadian) + s.X);
+                float y = (float)((plist[j].X - s.X) * Math.Sin(angleRadian) + (plist[j].Y - s.Y) * Math.Cos(angleRadian) + s.Y);
+                r[j] = new PointF(x, y);
+            }
+            //Рисуем повернутый объект
+            g.DrawPolygon(Pens.Black, r);
+
+        }
+
         void rotatePixels(double alpha)
         {
             var radians = alpha * Math.PI / 180;
@@ -254,7 +271,14 @@ namespace WindowsFormsApp4
         //вращение
         private void button4_Click(object sender, EventArgs e)
         {
+            if(radioSegment.Checked)
             rotatePixels(Convert.ToDouble(textBox5.Text));
+            else
+            if (radioRectangle.Checked)
+            {
+                rotatePolygon(Convert.ToDouble(textBox5.Text));
+            }
+
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -351,6 +375,11 @@ namespace WindowsFormsApp4
             {
                 textBox6.Text = "Point does NOT belong";
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
