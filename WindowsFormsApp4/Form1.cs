@@ -372,16 +372,23 @@ namespace WindowsFormsApp4
             bool belongs = false;
             for (int i = 0; i < plist.Count()-1; i++)
             {
-                if ((plist[i + 1].X - plist[i].X) * (yb.Value - plist[i].Y) - (plist[i + 1].Y - plist[i].Y) * (xb.Value - plist[i].X) >= 0) {
+                if ((plist[i + 1].X - plist[i].X) * (yb - plist[i].Y) - (plist[i + 1].Y - plist[i].Y) * (xb - plist[i].X) >= 0) {
                     belongs = true;
+                }
+                else
+                { 
+                    belongs = false;
+                    break;
                 }
             }
 
 
-            if ((plist.First().X - plist.Last().X) * (yb.Value - plist.Last().Y) - (plist.First().Y - plist.Last().Y) * (xb.Value - plist.Last().X) >= 0)
+            if ((plist.First().X - plist.Last().X) * (yb - plist.Last().Y) - (plist.First().Y - plist.Last().Y) * (xb - plist.Last().X) < 0)
             {
-                belongs = true;
+                belongs = false;
             }
+            
+
             if (belongs)
             {
                 textBox6.Text = "Point does belong";
