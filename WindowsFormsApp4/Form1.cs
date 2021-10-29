@@ -74,6 +74,19 @@ namespace WindowsFormsApp4
             g.DrawPolygon(Pens.Black, r);
 
         }
+        void resizePolygon(double percent)
+        {
+            double per = percent / 100.0d;
+            PointF s = new PointF((float)xb, (float)yb);
+            PointF[] r = new PointF[plist.Count()];
+            for (int j = 0; j < plist.Count; j++)
+            {
+                float x = plist[j].X + Math.Abs(((float)xb - plist[j].X) * (float)per);
+                float y = plist[j].Y + Math.Abs(((float)yb - plist[j].Y) * (float)per);
+                r[j] = new PointF(x, y);
+            }
+            g.DrawPolygon(Pens.Black, r);
+        }
 
         void rotatePixels(double alpha)
         {
@@ -274,8 +287,9 @@ namespace WindowsFormsApp4
             if(radioSegment.Checked)
             rotatePixels(Convert.ToDouble(textBox5.Text));
             else
-            if (radioRectangle.Checked)
+            if (radioRectangle.Checked )
             {
+
                 rotatePolygon(Convert.ToDouble(textBox5.Text));
             }
 
@@ -283,9 +297,9 @@ namespace WindowsFormsApp4
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
-            if (textBox5.Text != "")
+            if (textBox5.Text != "" && !radioPoint.Checked)
             {
-                button4.Enabled = true;
+                button4.Enabled = true;   
             }
             else { button4.Enabled = false; }
         }
@@ -380,6 +394,20 @@ namespace WindowsFormsApp4
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            resizePolygon(Convert.ToDouble(textBox7.Text));
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox7.Text != "")
+            {
+                button6.Enabled = true;
+            }
+            else { button6.Enabled = false; }
         }
 
         private void Form1_Load(object sender, EventArgs e)

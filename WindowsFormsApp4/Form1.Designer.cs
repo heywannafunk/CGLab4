@@ -53,6 +53,9 @@ namespace WindowsFormsApp4
             this.radioSegment = new System.Windows.Forms.RadioButton();
             this.radioPoint = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -75,6 +78,9 @@ namespace WindowsFormsApp4
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.textBox7);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.button6);
             this.panel5.Controls.Add(this.textBox6);
             this.panel5.Controls.Add(this.button5);
             this.panel5.Controls.Add(this.label5);
@@ -336,6 +342,37 @@ namespace WindowsFormsApp4
             this.panel4.TabIndex = 4;
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
             // 
+            // button6
+            // 
+            this.button6.Enabled = false;
+            this.button6.Location = new System.Drawing.Point(269, 72);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 28);
+            this.button6.TabIndex = 15;
+            this.button6.Text = "Size";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(377, 81);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 17);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "percent";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(441, 81);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(68, 22);
+            this.textBox7.TabIndex = 17;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -381,6 +418,9 @@ namespace WindowsFormsApp4
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button6;
     }
 }
 
